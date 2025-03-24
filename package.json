@@ -11,9 +11,18 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@vee-validate/zod": "^4.15.0",
+    "@vueuse/core": "^13.0.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "pinia": "^3.0.1",
+    "reka-ui": "^2.1.1",
+    "shadcn-vue": "^1.0.3",
+    "tailwind-merge": "^3.0.2",
+    "vee-validate": "^4.15.0",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
@@ -29,5 +38,6 @@
     "vite": "^6.2.1",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vue-tsc": "^2.2.8"
-  }
+  },
+  "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af"
 }
