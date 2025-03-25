@@ -32,3 +32,19 @@ export type Category = {
   owner: string,
   updatedAt: string
 }
+
+type PaginationContent = {
+  hasNextPage: boolean,
+  hasPrevPage: boolean,
+  limit: number,
+  nextPage: number,
+  page: number,
+  prevPage: number,
+  serialNumberStartFrom: number,
+  totalPages: number,
+}
+
+export type Categories = PaginationContent & {
+  totalCategories: number,
+  categories: Category[] 
+}
