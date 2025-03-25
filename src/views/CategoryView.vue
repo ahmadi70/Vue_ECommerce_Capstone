@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   Card,
@@ -31,6 +31,19 @@ const onSubmit = async () => {
   } finally {
   }
 }
+
+const fetchCategories = async () => {
+  try {
+    await categoryStore.getCategories(1, 2)
+  } catch (error) {
+    console.log(error)
+  } finally {
+  }
+}
+
+onMounted(async () => {
+  await fetchCategories()
+})
 </script>
 
 <template>
