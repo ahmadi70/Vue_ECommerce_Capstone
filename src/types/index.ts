@@ -12,14 +12,23 @@ export type Image = {
 }
 
 export type User = {
-      __v: number,
-      _id: string,
-      avatar: Image,
-      username: string,
-      email: string,
-      role: 'ADMIN' | 'USER',
-      // loginType: EMAIL_PASSWORD,
-      isEmailVerified: boolean,
-      createdAt: string,
-      updatedAt: string
-  }
+  __v: number,
+  _id: string,
+  avatar: Image,
+  username: string,
+  email: string,
+  role: 'ADMIN' | 'USER',
+  // loginType: EMAIL_PASSWORD,
+  isEmailVerified: boolean,
+  createdAt: string,
+  updatedAt: string
+}
+
+export type Category = {
+  __v: number,
+  _id: string,
+  createdAt: string,
+  name: string,
+  owner: string,
+  updatedAt: string
+}
