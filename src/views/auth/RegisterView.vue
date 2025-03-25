@@ -37,11 +37,11 @@ const form = ref<PAYLOAD>({
 })
 
 const router = useRouter()
-const store = useAuthStore()
+const authStore = useAuthStore()
 
 const onSubmit = async () => {
   try {
-    await store.registerUser(form.value)
+    await authStore.registerUser(form.value)
     router.push('/')
   } catch (error) {
     console.log(error)
