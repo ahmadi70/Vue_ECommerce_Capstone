@@ -11,12 +11,12 @@ import {
 } from '@/components/ui/select'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
-// import { useGlobalLoader } from 'vue-global-loader'
 import { computed, ref } from 'vue'
 import { useCategoryStore } from '@/stores/categoryStore'
+import FileUploader from '@/components/FileUploader.vue'
+import { useObjectUrl } from '@vueuse/core'
 
 const { isOpen, onClose } = useProductModal()
-// const { displayLoader, destroyLoader } = useGlobalLoader
 
 type PAYLOAD = {
   name: string
@@ -40,12 +40,76 @@ const form = ref<PAYLOAD>({
 
 const categoryStore = useCategoryStore()
 const categories = computed(() => categoryStore.categoriesData.categories)
+const mainImagePreview = ref<string[]>([])
+  const subImagePreviews = ref<string[]>([])
+
+const onMainImageDrop = (files: File[] | null) => {
+  form.value.mainImage = files && files.length > 0 ? files[0] : undefined
+  
+  if(files && files.length) {
+    files.forEach((file, index) => {
+
+      if (index === 0) {
+        const url = useObjectUrl(file)
+
+         if (url.value) {
+          mainImagePreview.value.push(url.value)
+         }
+      }
+    })
+  }
+}
+
+const onMainImageChange = (files: FileList | null) => {
+  form.value.mainImage = files && files.length > 0 ? files[0] : undefined
+  
+  if(files && files.length) {
+    Array.from(files).forEach((file, index) => {
+
+      if (index === 0) {
+        const url = useObjectUrl(file)
+        
+         if (url.value) {
+          mainImagePreview.value.push(url.value)
+         }
+      }
+    })
+  }
+}
+
+const onSubImagesDrop = (files: File[] | null) => {
+  form.value.subImages = files && files.length > 0 ? files : undefined
+  
+  if(files && files.length) {
+    files.forEach((file) => {
+      const url = useObjectUrl(file)
+      
+      if (url.value) {
+        subImagePreviews.value.push(url.value)
+      }
+    })
+  }
+}
+
+const onSubImagesChange = (files: FileList | null) => {
+  form.value.subImages = files && files.length > 0 ? Array.from(files) : undefined
+  
+  if(files && files.length) {
+    Array.from(files).forEach((file) => {
+      const url = useObjectUrl(file)
+        
+      if (url.value) {
+        subImagePreviews.value.push(url.value)
+      }
+    })
+  }
+}
 </script>
 
 <template>
   <Modal :isOpen="isOpen" @on-close="onClose">
     <div class="overflow-y-auto h-[500px] max-h-[600px]">
-      <form action="">
+      <form action="" class="grid gap-y-4">
         <div class="grid gap-2">
           <Label for="name">Name</Label>
           <Input 
@@ -72,6 +136,42 @@ const categories = computed(() => categoryStore.categoriesData.categories)
             placeholder="Stock"
             v-model="form.stock"
           />
+        </div>
+        <div class="grid gap-2">
+          <template v-if="!form.mainImage">
+            <Label>Main Image</Label>
+            <FileUploader
+              :multiple="false"
+              @on-change="onMainImageChange"
+              @on-drop="onMainImageDrop"
+            />
+          </template>
+          <div class="flex gap-x-2" v-else>
+            <img
+              v-for="img in mainImagePreview"
+              class="h-40 w-auto object-cover border"
+              :alt="img"
+              :src="img"
+            >
+          </div>
+        </div>
+        <div class="grid gap-2">
+          <template v-if="!form.subImages">
+            <Label>Sub Image</Label>
+            <FileUploader
+              :multiple="true"
+              @on-change="onSubImagesChange"
+              @on-drop="onSubImagesDrop"
+            />
+          </template>
+          <div class="grid grid-cols-2 gap-x-2 flex-wrap" v-else>
+            <img
+              v-for="img in subImagePreviews"
+              class="h-40 w-auto object-cover border"
+              :alt="img"
+              :src="img"
+            >
+          </div>
         </div>
         <div class="grid gap-2">
           <Label for="description">Description</Label>
