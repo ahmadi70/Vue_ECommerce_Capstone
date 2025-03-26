@@ -9,8 +9,9 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { computed, ref } from 'vue'
 import { useCategoryStore } from '@/stores/categoryStore'
 import FileUploader from '@/components/FileUploader.vue'
@@ -113,6 +114,7 @@ const onSubmit = async () => {
   try {
     displayLoader()
     await productStore.createProduct(form.value)
+    onClose()
   } catch (error) {
     console.log(error)
   } finally {
