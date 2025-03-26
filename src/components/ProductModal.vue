@@ -15,6 +15,8 @@ import { computed, ref } from 'vue'
 import { useCategoryStore } from '@/stores/categoryStore'
 import FileUploader from '@/components/FileUploader.vue'
 import { useObjectUrl } from '@vueuse/core'
+import { useGlobalLoader } from 'vue-global-loader'
+import { useProductStore } from '@/stores/productStore'
 
 const { isOpen, onClose } = useProductModal()
 
@@ -104,12 +106,25 @@ const onSubImagesChange = (files: FileList | null) => {
     })
   }
 }
+
+const { displayLoader, destroyLoader } = useGlobalLoader()
+const productStore = useProductStore()
+const onSubmit = async () => {
+  try {
+    displayLoader()
+    await productStore.createProduct(form.value)
+  } catch (error) {
+    console.log(error)
+  } finally {
+    destroyLoader()
+  }
+}
 </script>
 
 <template>
   <Modal :isOpen="isOpen" @on-close="onClose">
     <div class="overflow-y-auto h-[500px] max-h-[600px]">
-      <form action="" class="grid gap-y-4">
+      <form @submit.prevent="onSubmit" class="grid gap-y-4">
         <div class="grid gap-2">
           <Label for="name">Name</Label>
           <Input 
@@ -201,6 +216,7 @@ const onSubImagesChange = (files: FileList | null) => {
             </SelectContent>
           </Select>
         </div>
+        <Button class="w-full" type="submit"> Create Product </Button>
       </form>
     </div>
   </Modal>
