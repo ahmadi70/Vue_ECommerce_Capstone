@@ -65,6 +65,6 @@ export type Product = {
 }
 
 export type Products = PaginationContent & {
-  totalPages: number,
+  totalProducts: number,
   products: Product[]
 }
