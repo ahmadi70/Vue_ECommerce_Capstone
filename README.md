@@ -1,33 +1,46 @@
-# ./
+# VUE E-COMMERCE Capstone  
 
-This template should help get you started developing with Vue 3 in Vite.
+Master API integration in Vue.js by leveraging the power of **Vue 3, TypeScript, TailwindCSS (ShadCN), and Pinia** to build a modern e-commerce application.  
 
-## Recommended IDE Setup
+This project explores the latest Vue 3 features while implementing real-world functionalities such as authentication, pagination, global state management, and secure API requests.  
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🚀 Features & Topics Covered  
 
-## Type Support for `.vue` Imports in TS
+- **Props & Emits** – Efficient parent-child communication  
+- **Reusable Components** – Modular and scalable UI development  
+- **Custom Drag-and-Drop Component** – Enhanced user interactivity  
+- **Complete CRUD Operations** – Managing dynamic data  
+- **Pagination Management** – Handling large datasets seamlessly  
+- **Authentication & Navigation Guards** – Secured access to pages  
+- **Secure API Requests** – Token-based authentication  
+- **Type Safety with TypeScript** – Writing robust Vue code  
+- **Global State Management with Pinia & Composables** – Scalable state handling  
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 🛠️ Project Setup  
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Install dependencies using [pnpm](https://pnpm.io/):  
 
 ```sh
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### 🔥 Start Development Server  
 
 ```sh
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### 🏗️ Build for Production  
 
 ```sh
 pnpm build
 ```
+
+## 📚 Resources  
+
+- [Vue.js](https://vuejs.org/) – The progressive JavaScript framework  
+- [TypeScript](https://www.typescriptlang.org/) – Strongly typed JavaScript  
+- [Pinia](https://pinia.vuejs.org/) – State management for Vue  
+- [ShadCN Vue](https://www.shadcn-vue.com/) – UI components library  
+- [API Documentation](https://api.freeapi.app/#/) – Reference for backend integration  
+- [API Source Code](https://github.com/hiteshchoudhary/apihub)  
