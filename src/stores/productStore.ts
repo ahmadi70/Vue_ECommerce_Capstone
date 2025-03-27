@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import axios from "@/plugins/axios"
 import type { APIResponse, Product, Products } from "@/types"
+import { handleSuccess, handleError } from "@/lib/utils"
 
 export const useProductStore = defineStore('productStore', {
   state: () => ({
@@ -41,6 +42,7 @@ export const useProductStore = defineStore('productStore', {
           console.log('Products', data.data)
           resolve(data.data)
         } catch (error) {
+          handleError(error)
           reject(error)
         }
       })
@@ -53,6 +55,7 @@ export const useProductStore = defineStore('productStore', {
           console.log('Product', data.data)
           resolve(data.data)
         } catch (error) {
+          handleError(error)
           reject(error)
         }
       })
@@ -78,9 +81,11 @@ export const useProductStore = defineStore('productStore', {
           const { data } = await axios.patch<APIResponse<Product>>(`/ecommerce/products/${productId}`, formData)
 
           await this.getProducts(1, 2)
+          handleSuccess(data.statusCode.toString(), data.message)
           console.log('Product', data.data)
           resolve(data.data)
         } catch (error) {
+          handleError(error)
           reject(error)
         }
       })
@@ -94,6 +99,7 @@ export const useProductStore = defineStore('productStore', {
           console.log('Products', data.data)
           resolve(data.data)
         } catch (error) {
+          handleError(error)
           reject(error)
         }
       })
