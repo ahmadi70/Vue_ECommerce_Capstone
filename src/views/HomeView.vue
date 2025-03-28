@@ -86,17 +86,20 @@ onMounted(async () => {
     </div>
     <div class="w-full grid grid-cols-3 gap-4 my-10">
       <Card v-for="product in products" :key="product._id">
-        <CardContent class="grid gap-4 p-4 pt-4">
+        <CardContent class="grid gap-4 p-0">
           <div class="grid gap-2">
-            <div class="overflow-hidden rounded-md">
-              <img
-                :alt="product.name"
-                :src="product.mainImage.url"
-                class="h-auto w-full object-cover transition-all hover:scale-105"
-              >
+            <div class="group overflow-hidden cursor-pointer">
+                <div
+                :style="{ backgroundImage: `url('${product.mainImage.url}')`}"
+                style="transition-duration: 2000ms;"
+                class="bg-cover bg-center h-[20vh] transform scale-100 transition-transform ease-[cubic-bezier(0.25,0.45,0.45,0.95)] group-hover:scale-150"
+                ></div>
             </div>
-            <h2 class="text-xl font-semibold">{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
+            
+            <div class="p-4">
+              <h2 class="text-xl font-semibold line-clamp-1">{{ product.name }}</h2>
+              <p class="line-clamp-3">{{ product.description }}</p>
+            </div>
           </div>
         </CardContent>
         <CardFooter class="border-t p-4 pt-4 w-full justify-between">
