@@ -1,4 +1,4 @@
-# VUE E-COMMERCE Capstone  
+# VUE Master API Integration Capstone  
 
 Master API integration in Vue.js by leveraging the power of **Vue 3, TypeScript, TailwindCSS (ShadCN), and Pinia** to build a modern e-commerce application.  
 
