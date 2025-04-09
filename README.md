@@ -1,8 +1,6 @@
 # VUE Master API Integration Capstone  
 
-Master API integration in Vue.js by leveraging the power of **Vue 3, TypeScript, TailwindCSS (ShadCN), and Pinia** to build a modern e-commerce application.  
-
-This project explores the latest Vue 3 features while implementing real-world functionalities such as authentication, pagination, global state management, and secure API requests.  
+Implemented API integration and explored the latest Vue 3 features while implementing real-world functionalities, including secure API integration, drag-and-drop UI, full CRUD, authentication, and global state management.    
 
 ## 🚀 Features & Topics Covered  
 
